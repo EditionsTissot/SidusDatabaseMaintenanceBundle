@@ -25,11 +25,14 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class MysqlDumpCommand extends Command
 {
+    protected ManagerRegistry $doctrine;
     public function __construct(
-        protected ManagerRegistry $doctrine,
+        ManagerRegistry $doctrine
     ) {
         parent::__construct();
+        $this->doctrine = $doctrine;
     }
+
     protected function configure(): void
     {
         $this
