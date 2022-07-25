@@ -49,7 +49,7 @@ class MysqlCommand extends Command
         }
 
         $host = escapeshellarg($connection->getHost());
-        $port = escapeshellarg($connection->getPort());
+        $port = $connection->getPort();
         $username = escapeshellarg($connection->getUsername());
         $password = escapeshellarg($connection->getPassword());
         $database = escapeshellarg($connection->getDatabase());

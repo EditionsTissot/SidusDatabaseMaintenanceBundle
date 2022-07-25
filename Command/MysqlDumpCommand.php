@@ -55,7 +55,7 @@ class MysqlDumpCommand extends Command
             $path = " > '".escapeshellarg($input->getArgument('path'))."'";
         }
         $host = escapeshellarg($connection->getHost());
-        $port = escapeshellarg($connection->getPort());
+        $port = $connection->getPort();
         $username = escapeshellarg($connection->getUsername());
         $password = escapeshellarg($connection->getPassword());
         $database = escapeshellarg($connection->getDatabase());
