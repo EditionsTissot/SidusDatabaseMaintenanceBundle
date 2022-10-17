@@ -24,10 +24,12 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class MysqlCommand extends Command
 {
+    protected ManagerRegistry $doctrine;
     public function __construct(
-        protected ManagerRegistry $doctrine,
+        ManagerRegistry $doctrine
     ) {
         parent::__construct();
+        $this->doctrine = $doctrine;
     }
 
     protected function configure(): void
@@ -47,7 +49,7 @@ class MysqlCommand extends Command
         }
 
         $host = escapeshellarg($connection->getHost());
-        $port = escapeshellarg($connection->getPort());
+        $port = $connection->getPort();
         $username = escapeshellarg($connection->getUsername());
         $password = escapeshellarg($connection->getPassword());
         $database = escapeshellarg($connection->getDatabase());
